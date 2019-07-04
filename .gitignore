@@ -1,0 +1,6 @@
+*.info
+classes/
+.DS_Store
+*/node_modules/
+*/.grunt/
+./dist
