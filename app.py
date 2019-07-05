@@ -22,6 +22,11 @@ db = SQLAlchemy(app)
 
 # Models
 
+association_table = db.Table('association',
+    db.Column('posts_id', db.Integer, db.ForeignKey('posts.uuid')),
+    db.Column('category_id', db.Integer, db.ForeignKey('category.uuid'))
+)
+
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -39,7 +44,7 @@ class Post(db.Model):
     title = db.Column(db.String(256), index=True)
     body = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('users.uuid'))
-    category_id = db.Column(db.Integer, db.ForeignKey('category.uuid'))
+    categories = db.relationship('Category', secondary=association_table, back_populates='category_id')
 
     def __repr__(self):
         return '<Post % r>' % self.title
@@ -48,7 +53,8 @@ class Category(db.Model):
     __tablename__ = 'category'
     uuid = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    category = db.relationship('Post', backref='category')
+    colour = db.Column(db.String(50), nullable=True)
+    category_id = db.relationship('Post', secondary=association_table, back_populates='categories')
 
     def __repr__(self):
         return '<Category %r>' % self.name
@@ -74,6 +80,7 @@ class Query(graphene.ObjectType):
     node = graphene.relay.Node.Field()
     all_posts = SQLAlchemyConnectionField(PostObject)
     all_users = SQLAlchemyConnectionField(UserObject)
+    all_categories = SQLAlchemyConnectionField(CategoryObject)
 
 schema = graphene.Schema(query=Query)
 
