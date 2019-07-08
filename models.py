@@ -33,7 +33,7 @@ class Post(db.Model):
     title = db.Column(db.String(256), index=True)
     body = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('users.uuid'))
-    categories = db.relationship('Category', secondary=association_table, back_populates='category_id')
+    categories = db.relationship('Category', secondary=association_table, back_populates='category_id', lazy='dynamic')
 
     def __repr__(self):
         return '<Post % r>' % self.title
@@ -43,7 +43,13 @@ class Category(db.Model):
     uuid = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     colour = db.Column(db.String(50), nullable=True)
-    category_id = db.relationship('Post', secondary=association_table, back_populates='categories')
+    category_id = db.relationship('Post', secondary=association_table, back_populates='categories', lazy='dynamic')
 
     def __repr__(self):
         return '<Category %r>' % self.name
+
+    def serialize(self):
+        return {
+            'name': self.name,
+            'colour': self.colour
+        }

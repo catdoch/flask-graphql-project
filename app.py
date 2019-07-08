@@ -27,7 +27,7 @@ from schemas import schema
 # Routes
 @app.route('/')
 def index():
-    return '<p>Hello World</p>'
+    return render_template('home.html')
 
 @app.route('/add-user')
 def add_user():

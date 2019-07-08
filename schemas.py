@@ -3,6 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from flask_graphql import GraphQLView
 
 from models import Post, User, Category
+from app import db
 
 # Schema Objects
 class PostObject(SQLAlchemyObjectType):
