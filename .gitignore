@@ -4,3 +4,4 @@ classes/
 */node_modules/
 */.grunt/
 ./dist
+node_modules
