@@ -38,7 +38,10 @@ def add_user():
         db.session.commit()
         return jsonify(value='success')
     except Exception as e:
-        return jsonify(value=str(e))
+        if 'UniqueViolation' in str(e):
+            return jsonify(value='Username already exists, please choose another')
+        else:
+            return jsonify(value=str(e))
 
 @app.route('/add-post')
 def add_post():

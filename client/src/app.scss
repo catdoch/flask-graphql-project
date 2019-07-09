@@ -25,10 +25,18 @@ form {
     }
 }
 
+.error {
+    margin: 0;
+    padding-top: 12px;
+    text-align: left;
+    color: $pop;
+    font-weight: bold;
+}
+
 .btn {
     height: 44px;
     width: 100%;
-    margin-top: 18px;
+    margin-top: 12px;
     background: $emphasis;
     color: #FFF;
 }

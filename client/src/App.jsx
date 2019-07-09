@@ -5,6 +5,7 @@ import './app.scss';
 const App = () => {
     const [users, setUsers] = useState([]);
     const [username, setUsername] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
         getAllUsers();
@@ -35,19 +36,27 @@ const App = () => {
                 return json;
             })
             .catch(e => {
-                return e
+                setError(e);
             });
+
+        setUsername('');
 
         if (data.value === 'success') {
             getAllUsers();
-            setUsername('');
+            setError('');
+        } else {
+            setError(data.value);
         }
     };
 
     const onChange = (e) => {
         const input = e.currentTarget.value;
         setUsername(input);
-    }
+    };
+
+    const onFocus = () => {
+        setError('');
+    };
 
     return (
         <div className="user-container">
@@ -67,12 +76,15 @@ const App = () => {
                         <input
                             className="form-control"
                             type="text"
+                            autocomplete="off"
                             onChange={onChange}
+                            onFocus={onFocus}
                             placeholder="Enter you username"
                             id="name"
                             value={username}
                             name="name"
                         />
+                        <p className="error">{error}</p>
                     </div>
                     <button className="btn btn-primary">Add</button>
                 </form>
