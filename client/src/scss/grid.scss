@@ -1,0 +1,26 @@
+$gutter-size--xsmall:   2px;
+$gutter-size--small:    4px;
+$gutter-size:           8px;
+$gutter-size--medium:   12px;
+$gutter-size--large:    16px;
+$gutter-size--xlarge:   24px;
+$gutter-size--xxlarge:  32px;
+$gutter-size--xxxlarge: 44px;
+
+$baseline-height:       1.4;
+
+$width--xs:             320px;
+$width--s:              481px;
+$width--m:              768px;
+$width--l:              1024px;
+$width--xl:             1280px;
+$width--xxl:            1349px;
+
+$mq-breakpoints: (
+    xs:     $width--xs,
+    s:      $width--s,
+    m:      $width--m,
+    l:      $width--l,
+    xl:     $width--xl,
+    xxl:    $width--xxl
+);

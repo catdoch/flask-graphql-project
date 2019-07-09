@@ -1,0 +1,56 @@
+@import './scss/normalize.scss';
+
+
+.block-title {
+    background: $emphasis;
+    text-align: center;
+    margin-right: 6px;
+    line-height: 2;
+
+    &.block-right {
+        background: $pop;
+        margin-left: 6px;
+    }
+}
+
+form {
+    padding: 0 6px;
+
+    .form-control {
+        height: 44px;
+        width: 100%;
+        padding: 0 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+}
+
+.btn {
+    height: 44px;
+    width: 100%;
+    margin-top: 18px;
+    background: $emphasis;
+    color: #FFF;
+}
+
+.block-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.home-title {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.user-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.user-subContainer {
+    flex: 1;
+}

@@ -29,16 +29,16 @@ from schemas import schema
 def index():
     return render_template('home.html')
 
-@app.route('/add-user')
+@app.route('/add-user', methods=['GET', 'POST'])
 def add_user():
     username = request.args.get('username')
     try:
         user=User(username=username)
         db.session.add(user)
         db.session.commit()
-        return 'User added, username id={}'.format(user.uuid)
+        return jsonify(value='success')
     except Exception as e:
-        return(str(e))
+        return jsonify(value=str(e))
 
 @app.route('/add-post')
 def add_post():

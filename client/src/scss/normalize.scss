@@ -1,0 +1,17 @@
+@import './grid.scss';
+@import './colours.scss';
+
+html, body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+html {
+    background: rgb(37,95,133);
+    background: linear-gradient(135deg, rgba(37,95,133,1) 0%, rgba(67,129,193,1) 58%, rgba(247,111,142,1) 98%);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+ .hidden {
+     display: none;
+ }
