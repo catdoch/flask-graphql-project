@@ -6,13 +6,13 @@
   "license": "MIT",
   "engines": {
     "npm": "6.4.1",
-    "node": "10.15.3"
+    "node": "10.15.3",
+    "yarn": "1.x"
   },
   "scripts": {
     "start": "webpack-dev-server --mode production",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "heroku-prebuild": "NODE_ENV=production yarn install && yarn build"
+    "dev": "webpack --mode development"
   },
   "devDependencies": {
     "@babel/cli": "7.1.0",
