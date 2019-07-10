@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './app.jsx';
-import Post from './post.jsx';
+import App from './App.jsx';
+import Post from './Post.jsx';
 
 const app = document.getElementById('app');
 const post = document.getElementById('post');

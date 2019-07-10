@@ -11,8 +11,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode production",
-    "build": "yarn install",
-    "heroku-postbuild": "webpack -p",
+    "build": "webpack --mode production",
     "dev": "webpack --mode development"
   },
   "devDependencies": {
