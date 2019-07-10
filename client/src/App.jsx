@@ -4,25 +4,17 @@ import './app.scss';
 
 const App = () => {
     const [users, setUsers] = useState([]);
-    const [posts, setPosts] = useState([]);
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
 
     useEffect(() => {
         getAllUsers();
-        getAllPosts();
     }, []);
 
     const getAllUsers = async () => {
         let response = await fetch('/getall/users');
         let users = await response.json();
         setUsers(users.users);
-    };
-
-    const getAllPosts = async () => {
-        let response = await fetch('/getall/posts');
-        let posts = await response.json();
-        setPosts(posts.posts);
     };
 
     const addNewUser = async (e) => {
@@ -68,7 +60,7 @@ const App = () => {
 
     return (
         <div className="user-container">
-            {/* <div className="user-subContainer">
+            <div className="user-subContainer">
                 <h2 className="block-title">View all users</h2>
                 {users.map((user) => (
                     <p className="block-value" key={user.uuid}>
@@ -96,23 +88,6 @@ const App = () => {
                     </div>
                     <button className="btn btn-primary">Add</button>
                 </form>
-            </div> */}
-            <div className="user-subContainer">
-                <h2 className="block-title">View all posts</h2>
-                {posts.map((post) => (
-                    <div>
-                        <h3>{post.title}</h3>
-                        { post.author && post.author.username &&
-                            <p>Author: {post.author.username}</p>
-                        }
-                        {post.body && <p>{post.body}</p> }
-                        { post.categories.length > 0 &&
-                            post.categories.map(cat => (
-                                <span style={{ backgroundColor: cat.colour }}>{ cat.name }</span>
-                            ))
-                        }
-                    </div>
-                ))}
             </div>
         </div>
     );

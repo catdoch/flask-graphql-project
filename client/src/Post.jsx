@@ -25,7 +25,7 @@ const Post = () => {
                                 <p> {post.author.username}</p>
                             }
                         </header>
-                        { post.categories.length > 0 &&
+                        { post.categories && post.categories.length > 0 &&
                             post.categories.map(cat => (
                                 <span style={{ backgroundColor: cat.colour }}>{ cat.name }</span>
                             ))
