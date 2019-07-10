@@ -14,7 +14,7 @@ const App = () => {
     const getAllUsers = async () => {
         let response = await fetch('/getall/users');
         let users = await response.json();
-        setUsers(users.users);
+        setUsers(users.users[0]);
     };
 
     const addNewUser = async (e) => {
