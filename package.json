@@ -12,7 +12,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode production",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development",
+    "heroku-postbuild": "npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "7.1.0",
