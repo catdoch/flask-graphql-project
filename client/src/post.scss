@@ -1,0 +1,26 @@
+@import './scss/normalize.scss';
+
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 2rem;
+    margin: 24px 48px;
+    .post {
+        background: rgba(221, 189, 213, 0.5);
+        text-align: center;
+        color: white;
+
+        &-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            > p {
+                &:before {
+                    content: " — ";
+                }
+            }
+        }
+    }
+}

@@ -20,12 +20,6 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-    def serialize(self):
-        return {
-            'username': self.username,
-            'uuid': self.uuid
-        }
-
 class Post(db.Model):
     __tablename__ = 'posts'
 
@@ -47,9 +41,3 @@ class Category(db.Model):
 
     def __repr__(self):
         return '<Category %r>' % self.name
-
-    def serialize(self):
-        return {
-            'name': self.name,
-            'colour': self.colour
-        }
