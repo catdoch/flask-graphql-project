@@ -11,7 +11,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode production",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development",
+    "heroku-prebuild": "NODE_ENV=production yarn install && yarn build"
   },
   "devDependencies": {
     "@babel/cli": "7.1.0",
