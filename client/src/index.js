@@ -26,5 +26,9 @@ if (app) {
 }
 
 if (post) {
-    ReactDOM.render(<Post />, post);
+    ReactDOM.render(
+        <ApolloProvider client={client}>
+            <Post />
+        </ApolloProvider>,
+    post);
 }
