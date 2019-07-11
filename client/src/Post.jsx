@@ -10,9 +10,9 @@ const Post = () => {
     }, []);
 
     const getAllPosts = async () => {
-        let response = await fetch('/getall/posts');
-        let posts = await response.json();
-        setPosts(posts.posts);
+        const response = await fetch('/getall/posts');
+        const posts = await response.json();
+        setPosts(posts);
     };
 
     return (

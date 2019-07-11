@@ -151,7 +151,7 @@ def get_all_posts():
     try:
         posts=Post.query.all()
         result = posts_schema.dump(posts)
-        return jsonify({ "posts": result })
+        return jsonify(result)
     except Exception as e:
         return(str(e))
 
@@ -160,7 +160,7 @@ def get_all_users():
     try:
         users=User.query.all()
         result = users_schema.dump(users)
-        return jsonify({ "users": result })
+        return jsonify(result)
     except Exception as e:
         return(str(e))
 
@@ -169,7 +169,7 @@ def get_all_categories():
     try:
         categories=Category.query.all()
         result = categories_schema.dump(categories)
-        return jsonify({ "categories": result })
+        return jsonify(result)
     except Exception as e:
         return(str(e))
 

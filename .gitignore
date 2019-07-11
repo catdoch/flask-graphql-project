@@ -2,10 +2,10 @@
 classes/
 .DS_Store
 */node_modules/
-*/.grunt/
-./dist
 node_modules
 .env
 __pycache__/
 env/
 .gitignore
+./static/*
+yarn-error.log

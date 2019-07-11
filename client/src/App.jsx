@@ -12,9 +12,9 @@ const App = () => {
     }, []);
 
     const getAllUsers = async () => {
-        let response = await fetch('/getall/users');
-        let users = await response.json();
-        setUsers(users.users[0]);
+        const response = await fetch('/getall/users');
+        const users = await response.json();
+        setUsers(users);
     };
 
     const addNewUser = async (e) => {
