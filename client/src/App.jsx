@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -27,7 +27,6 @@ const GET_USERS = gql`
 const App = () => {
     const [username, setUsername] = useState('');
     const [fetchError, setError] = useState('');
-    const [refetchUsers, setRefetch] = useState();
 
     const addNewUser = async (e, refetch) => {
         e.preventDefault();

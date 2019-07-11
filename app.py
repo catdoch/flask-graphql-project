@@ -95,6 +95,10 @@ def index():
 def post_index():
     return render_template('posts.html')
 
+@app.route('/add-post-form')
+def post_form_index():
+    return render_template('add-post-form.html')
+
 @app.route('/add-user', methods=['GET', 'POST'])
 def add_user():
     username = request.args.get('username')
@@ -109,7 +113,7 @@ def add_user():
         else:
             return jsonify(value=str(e))
 
-@app.route('/add-post')
+@app.route('/add-post', methods=['GET', 'POST'])
 def add_post():
     categories = []
     title = request.args.get('title')
@@ -127,9 +131,10 @@ def add_post():
         )
         db.session.add(post)
         db.session.commit()
-        return 'Post added, post id={}'.format(post.uuid)
+        return jsonify(value='success')
     except Exception as e:
         return(str(e))
+    return render_template('add-post-form.html')
 
 @app.route('/add-category')
 def add_category():
