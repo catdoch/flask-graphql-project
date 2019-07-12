@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-// import './add-post-form.scss';
+import './add-post-form.scss';
 
 const GET_USERS = gql`
     {
@@ -129,6 +129,7 @@ const AddPostForm = () => {
                         id="author"
                         value={form.author}
                         name="author">
+                        <option disabled selected value="">Select an author</option>
                         <Query query={GET_USERS}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
@@ -139,6 +140,8 @@ const AddPostForm = () => {
                             }}
                         </Query>
                     </select>
+                </div>
+                <div className="form-row">
                     <select
                         name={name}
                         className="form-control"
@@ -148,6 +151,7 @@ const AddPostForm = () => {
                         id="categories"
                         value={form.categories}
                         name="categories">
+                        <option disabled selected value="">Select a category</option>
                         <Query query={GET_CATEGORIES}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;

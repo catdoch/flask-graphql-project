@@ -1,0 +1,19 @@
+@import './scss/normalize.scss';
+@import './scss/grid.scss';
+
+.post-form-container {
+    width: 500px;
+    margin: 0 auto;
+
+    .form-row {
+        margin: $gutter-size--medium 0;
+
+        .form-control {
+            padding: 12px;
+        }
+
+        textarea {
+            min-height: 200px;
+        }
+    }
+}
