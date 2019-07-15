@@ -63,9 +63,12 @@ const AddPostForm = () => {
             });
 
         if (data.value === 'success') {
-            setSuccess(<a href="/viewall/posts">Success! View here</a>);
+            setSuccess(
+                <a className="success-overlay" href="/viewall/posts">
+                    Success! View here
+                </a>
+            );
             setError('');
-
         } else {
             setError(data.value);
         }
@@ -75,7 +78,7 @@ const AddPostForm = () => {
         const input = e.currentTarget.value;
         const name = e.currentTarget.name;
         const formValue = { [name]: input };
-        setForm(prevState => {
+        setForm((prevState) => {
             return { ...prevState, ...formValue };
         });
     };
@@ -86,9 +89,7 @@ const AddPostForm = () => {
 
     return (
         <div className="post-form-container">
-            {success &&
-                success
-            }
+            {success && success}
             <form onSubmit={makeRequest}>
                 <label className="hidden" for="name">
                     Add a new post
@@ -129,14 +130,16 @@ const AddPostForm = () => {
                         id="author"
                         value={form.author}
                         name="author">
-                        <option disabled selected value="">Select an author</option>
+                        <option disabled selected value="">
+                            Select an author
+                        </option>
                         <Query query={GET_USERS}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
                                 if (error) return <p>Error</p>;
-                                return data.allUsers.edges.map(user => (
+                                return data.allUsers.edges.map((user) => (
                                     <option label={user.node.username} value={user.node.username} />
-                                ))
+                                ));
                             }}
                         </Query>
                     </select>
@@ -151,20 +154,22 @@ const AddPostForm = () => {
                         id="categories"
                         value={form.categories}
                         name="categories">
-                        <option disabled selected value="">Select a category</option>
+                        <option disabled selected value="">
+                            Select a category
+                        </option>
                         <Query query={GET_CATEGORIES}>
                             {({ loading, error, data }) => {
                                 if (loading) return <p>Loading...</p>;
                                 if (error) return <p>Error</p>;
-                                return data.allCategories.edges.map(cat => (
+                                return data.allCategories.edges.map((cat) => (
                                     <option label={cat.node.name} value={cat.node.name} />
-                                ))
+                                ));
                             }}
                         </Query>
                     </select>
                 </div>
                 <p className="error">{error}</p>
-                <button className="btn btn-primary">Add</button>
+                <button className="btn btn-primary full-width">Add</button>
             </form>
         </div>
     );

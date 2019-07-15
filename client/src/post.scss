@@ -1,5 +1,11 @@
 @import './scss/normalize.scss';
 
+.post-btn {
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+}
+
 .post-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -15,6 +21,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
 
             > p {
                 &:before {
@@ -22,5 +29,17 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .post-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .post-container {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

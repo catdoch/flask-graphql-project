@@ -6,6 +6,7 @@
     text-align: center;
     margin-right: 6px;
     line-height: 2;
+    color: #FFF;
 
     &.block-right {
         background: $pop;
@@ -33,25 +34,11 @@ form {
     font-weight: bold;
 }
 
-.btn {
-    height: 44px;
-    width: 100%;
-    background: $emphasis;
-    border: none;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #FFF;
-    transition: background-color .222s ease-out;
-
-    &:hover {
-        background: #987bab;
-    }
-}
-
 .block-value {
-    font-size: 18px;
     font-weight: bold;
+    border-bottom: 3px solid #f76e8e;
+    padding-bottom: 12px;
+    margin: 0;
 }
 
 .home-title {
@@ -70,4 +57,39 @@ form {
 
 .user-subContainer {
     flex: 1;
+
+    form {
+        display: flex;
+        padding: 0;
+        border-bottom: 6px dotted $pop;
+
+        .form-row {
+            flex: 2;
+        }
+
+        .btn {
+            flex: 1;
+        }
+    }
+}
+
+.user-post-container {
+    background: rgba(221, 189, 213, 0.5);
+    padding: $gutter-size--medium;
+    box-sizing: border-box;
+    margin-top: $gutter-size--large;
+}
+
+@media only screen and (max-width: 400px) {
+    .home-title {
+        font-size: 2rem;
+    }
+    .user-container {
+        width: 100%;
+        padding: $gutter-size--medium $gutter-size--xlarge;
+        box-sizing: border-box;
+    }
+    .block-title {
+        margin: $gutter-size--xxlarge 0 0 0;
+    }
 }

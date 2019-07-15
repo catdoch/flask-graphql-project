@@ -7,13 +7,45 @@
 
     .form-row {
         margin: $gutter-size--medium 0;
+        background: #FFF;
 
         .form-control {
-            padding: 12px;
+            padding: $gutter-size--medium;
         }
 
         textarea {
             min-height: 200px;
+        }
+    }
+}
+
+.success-overlay {
+    background: $emphasis;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 50% 0;
+    color: #FFF;
+    font-size: 2em;
+
+    &:after {
+        content: 🎉;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 400px) {
+    .post-form-container {
+        width: 100%;
+        padding: 0 $gutter-size--medium;
+        box-sizing: border-box;
+
+        .form-row > .form-control {
+            padding: 6px;
         }
     }
 }

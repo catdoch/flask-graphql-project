@@ -72,6 +72,26 @@ const App = () => {
     return (
         <div className="user-container">
             <div className="user-subContainer">
+                <form onSubmit={(e) => addNewUser(e, refetch)}>
+                    <label className="hidden" for="name">
+                        Add a new user
+                    </label>
+                    <div className="form-row">
+                        <input
+                            className="form-control"
+                            type="text"
+                            autocomplete="off"
+                            onChange={onChange}
+                            onFocus={onFocus}
+                            placeholder="Enter you username"
+                            id="name"
+                            value={username}
+                            name="name"
+                        />
+                        <p className="error">{fetchError}</p>
+                    </div>
+                    <button className="btn btn-primary">Add</button>
+                </form>
                 <h2 className="block-title">View all users</h2>
                 <Query query={GET_USERS}>
                     {({ loading, error, data, refetch }) => {
@@ -80,41 +100,20 @@ const App = () => {
                         return (
                             <div>
                                 {data.allUsers.edges.map((elem) => (
-                                    <div>
-                                        <p className="block-value" key={elem.node.uuid}>
+                                    <div className="user-post-container">
+                                        <h2 className="block-value" key={elem.node.uuid}>
                                             {elem.node.username}
-                                        </p>
-                                        {elem.node.posts &&
-                                        elem.node.posts.edges.length > 0 &&
+                                        </h2>
+                                        {elem.node.posts && elem.node.posts.edges.length > 0 && (
                                             <Fragment>
-                                                <h2>{elem.node.username}'s Posts:</h2>
+                                                <h3>{elem.node.username}'s Posts:</h3>
                                                 {elem.node.posts.edges.map((post) => (
-                                                    <p>{ post.node.title }</p>
+                                                    <p>{post.node.title}</p>
                                                 ))}
                                             </Fragment>
-                                        }
+                                        )}
                                     </div>
                                 ))}
-                                <form onSubmit={(e) => addNewUser(e, refetch)}>
-                                    <label className="hidden" for="name">
-                                        Add a new user
-                                    </label>
-                                    <div className="form-row">
-                                        <input
-                                            className="form-control"
-                                            type="text"
-                                            autocomplete="off"
-                                            onChange={onChange}
-                                            onFocus={onFocus}
-                                            placeholder="Enter you username"
-                                            id="name"
-                                            value={username}
-                                            name="name"
-                                        />
-                                        <p className="error">{fetchError}</p>
-                                    </div>
-                                    <button className="btn btn-primary">Add</button>
-                                </form>
                             </div>
                         );
                     }}
