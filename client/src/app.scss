@@ -1,5 +1,13 @@
 @import './scss/normalize.scss';
 
+.view-all-link {
+    display: block;
+    font-size: 30px;
+    color: $pop;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: $gutter-size--xxxlarge;
+}
 
 .block-title {
     background: $emphasis;
@@ -91,5 +99,11 @@ form {
     }
     .block-title {
         margin: $gutter-size--xxlarge 0 0 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .user-container {
+        width: 80%;
     }
 }

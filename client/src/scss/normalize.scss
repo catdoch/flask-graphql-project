@@ -41,3 +41,23 @@ body {
         background: #987bab;
     }
 }
+
+.filter-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: $gutter-size--xlarge 0 $gutter-size--medium 0;
+
+    > label {
+        color: #FFF;
+        font-weight: bold;
+        margin-right: $gutter-size--medium;
+    }
+
+    > select {
+        height: 44px;
+        min-width: 200px;
+        font-size: 14px;
+        background: #FFF;
+    }
+}

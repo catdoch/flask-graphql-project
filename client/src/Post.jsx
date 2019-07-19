@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 import './post.scss';
 
 const GET_POSTS = gql`
-    {
-        allPosts {
+    query($sort: [PostObjectSortEnum]) {
+        allPosts(sort: $sort) {
             edges {
                 node {
                     author {
@@ -31,7 +31,7 @@ const GET_POSTS = gql`
 
 const Post = () => (
     <div className="post-container">
-        <Query query={GET_POSTS}>
+        <Query query={GET_POSTS} variables={{ sort: 'UUID_DESC' }}>
             {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error :(</p>;

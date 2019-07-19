@@ -195,12 +195,18 @@ def add_user_form():
 class PostObject(SQLAlchemyObjectType):
     class Meta:
         model = Post
-        interfaces = (graphene.relay.Node, )
+
+class PostConnection(graphene.relay.Connection):
+    class Meta:
+        node = PostObject
 
 class UserObject(SQLAlchemyObjectType):
     class Meta:
         model = User
-        interfaces = (graphene.relay.Node, )
+
+class UserConnection(graphene.relay.Connection):
+    class Meta:
+        node = UserObject
 
 class CategoryObject(SQLAlchemyObjectType):
     class Meta:
@@ -209,8 +215,8 @@ class CategoryObject(SQLAlchemyObjectType):
 
 class Query(graphene.ObjectType):
     node = graphene.relay.Node.Field()
-    all_posts = SQLAlchemyConnectionField(PostObject)
-    all_users = SQLAlchemyConnectionField(UserObject)
+    all_posts = SQLAlchemyConnectionField(PostConnection)
+    all_users = SQLAlchemyConnectionField(UserConnection)
     all_categories = SQLAlchemyConnectionField(CategoryObject)
 
 schema = graphene.Schema(query=Query)
