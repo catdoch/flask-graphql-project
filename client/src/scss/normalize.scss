@@ -12,6 +12,10 @@ body {
     min-height: 100vh;
 }
 
+body {
+    padding-bottom: $gutter-size--xlarge;
+}
+
 .hidden {
     display: none;
 }
