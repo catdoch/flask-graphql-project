@@ -1,16 +1,24 @@
+{% extends "base.html" %}
+
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <div class="post-form-container">
+        <h1 class="home-title">Sign In</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <label className="hidden" for="name">
+                {{ form.username.label }}
+            </label>
+            <div className="form-row">
+                {{ form.username(size=32) }}
+            </div>
+            <label className="hidden" for="name">
+                {{ form.password.label }}
+            </label>
+            <div className="form-row">
+                {{ form.password(size=32) }}
+            </div>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <div class="button-">{{ form.submit() }}</div>
+        </form>
+    </div>
 {% endblock %}

@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_assets import Environment, Bundle
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 from flask_login import LoginManager
