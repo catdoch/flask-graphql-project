@@ -22,6 +22,24 @@
     }
 }
 
+.remember_me {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $emphasis;
+    padding: $gutter-size--medium;
+    > a {
+        color: #FFF;
+        font-size: 18px;
+        text-decoration: none;
+    }
+}
+
 form {
     padding: 0 6px;
 
