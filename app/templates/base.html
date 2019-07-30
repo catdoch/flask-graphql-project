@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Flask React</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="nav">
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </nav>
+        {% block content %}{% endblock %}
+    </body>
+    <script src="/static/bundle.js"></script>
+</html>

@@ -7,5 +7,5 @@ node_modules
 __pycache__/
 env/
 .gitignore
-./static/*
+app/static/*
 yarn-error.log

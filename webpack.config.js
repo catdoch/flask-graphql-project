@@ -1,8 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: ['./client/src/index.js'],
+    entry: ['./app/client/src/index.js'],
     devtool: 'source-map',
     module: {
         rules: [
@@ -28,11 +28,11 @@ module.exports = {
         }),
     ],
     output: {
-        path: __dirname + '/static',
+        path: __dirname + '/app/static',
         filename: 'bundle.js',
     },
-    optimization: {
-        concatenateModules: true,
-        minimizer: [new UglifyJsPlugin()],
-    },
+    // optimization: {
+    //     concatenateModules: true,
+    //     minimizer: [new UglifyJsPlugin()],
+    // },
 };

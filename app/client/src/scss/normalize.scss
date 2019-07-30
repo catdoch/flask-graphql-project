@@ -20,6 +20,19 @@ body {
     display: none;
 }
 
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $emphasis;
+    padding: $gutter-size--medium;
+    > a {
+        color: #FFF;
+        font-size: 18px;
+        text-decoration: none;
+    }
+}
+
 .btn {
     background: $emphasis;
     border-radius: 3px;
