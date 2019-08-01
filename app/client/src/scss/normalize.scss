@@ -48,7 +48,7 @@ body {
 
 .filter-box {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding: $gutter-size--xlarge 0 $gutter-size--medium 0;
 
@@ -63,5 +63,12 @@ body {
         min-width: 200px;
         font-size: 14px;
         background: #FFF;
+        padding-left: $gutter-size--small;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .filter-box {
+        justify-content: flex-end;
     }
 }

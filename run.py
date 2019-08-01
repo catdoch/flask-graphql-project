@@ -77,9 +77,10 @@ def add_user():
 @app.route('/add-post', methods=['GET', 'POST'])
 def add_post():
     categories = []
+    userId = current_user.get_id()
     title = request.args.get('title')
     body = request.args.get('body')
-    author = User.query.filter_by(username=request.args.get('author')).first()
+    author = User.query.filter_by(uuid=userId).first()
     categorySplit = request.args.get('categories').split(',')
     for cats in categorySplit:
         categories.append(Category.query.filter_by(name=cats).first())

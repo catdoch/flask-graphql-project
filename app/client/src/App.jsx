@@ -5,8 +5,6 @@ import { Query } from 'react-apollo';
 import './app.scss';
 
 const App = () => {
-    const [username, setUsername] = useState('');
-    const [fetchError, setError] = useState('');
     const [sortBy, setSort] = useState('UUID_DESC');
 
     const GET_USERS = gql`
@@ -24,38 +22,6 @@ const App = () => {
             }
         }
     `;
-
-    const addNewUser = async (e, refetch) => {
-        e.preventDefault();
-
-        const settings = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-        };
-
-        const data = await fetch(`/add-user?username=${username}`, settings)
-            .then((response) => response.json())
-            .then((json) => {
-                return json;
-            })
-            .catch((e) => {
-                setError(e);
-            });
-
-        setUsername('');
-
-        if (data.value === 'success') {
-            refetch();
-            setError('');
-        } else {
-            setError(data.value);
-        }
-    };
 
     const onChange = (e) => {
         const input = e.currentTarget.value;
@@ -80,26 +46,6 @@ const App = () => {
                         if (error) return <p>Error :(</p>;
                         return (
                             <div>
-                                <form onSubmit={(e) => addNewUser(e, refetch)}>
-                                    <label className="hidden" for="name">
-                                        Add a new user
-                                    </label>
-                                    <div className="form-row">
-                                        <input
-                                            className="form-control"
-                                            type="text"
-                                            autocomplete="off"
-                                            onChange={onChange}
-                                            onFocus={onFocus}
-                                            placeholder="Enter you username"
-                                            id="name"
-                                            value={username}
-                                            name="name"
-                                        />
-                                        <p className="error">{fetchError}</p>
-                                    </div>
-                                    <button className="btn btn-primary">Add</button>
-                                </form>
                                 <div className="filter-box">
                                     <label htmlFor="sort-by">Sort By:</label>
                                     <select

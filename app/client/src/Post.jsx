@@ -46,7 +46,7 @@ const Post = () => (
                         {elem.node.categories &&
                             elem.node.categories.edges.length > 0 &&
                             elem.node.categories.edges.map((cat) => (
-                                <span style={{ backgroundColor: cat.node.colour }}>
+                                <span className="category-blob" style={{ backgroundColor: cat.node.colour }}>
                                     {cat.node.name}
                                 </span>
                             ))}

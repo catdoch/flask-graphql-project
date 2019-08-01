@@ -6,7 +6,7 @@
     color: $pop;
     text-align: center;
     font-weight: bold;
-    margin-bottom: $gutter-size--xxxlarge;
+    margin-bottom: $gutter-size--large;
 }
 
 .block-title {
@@ -25,6 +25,11 @@
 .remember_me {
     color: #FFF;
     font-weight: bold;
+}
+
+.url-link {
+    color: #FFF;
+    font-size: 18px;
 }
 
 .nav {
@@ -106,7 +111,7 @@ form {
     margin-top: $gutter-size--large;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
     .home-title {
         font-size: 2rem;
     }

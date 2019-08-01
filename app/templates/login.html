@@ -17,5 +17,6 @@
             <p>{{ form.remember_me() }} {{ form.remember_me.label(class_="remember_me") }}</p>
             {{ form.submit(class_="btn btn-primary full-width") }}
         </form>
+        <a class="url-link" href="{{ url_for('register') }}">Or register here</a>
     </div>
 {% endblock %}

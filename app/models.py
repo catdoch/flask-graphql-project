@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, ValidationError, pre_load
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import current_user
 from flask_login import UserMixin
 
 from app import db, login
@@ -21,6 +22,10 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author')
     password_hash = db.Column(db.String(128))
     email = db.Column(db.String(64), unique=True, index=True)
+    is_current_user = db.Column(db.Boolean)
+
+    def is_current_user(self):
+        self.is_current_user = current_user.is_authenticated
 
     def get_id(self):
            return (self.uuid)

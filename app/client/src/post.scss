@@ -16,18 +16,30 @@
         background: rgba(221, 189, 213, 0.5);
         text-align: center;
         color: white;
+        padding: $gutter-size--medium;
 
         &-title {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: $gutter-size--large;
+            
+            > h3 {
+                margin: 0;
+            }
 
             > p {
+                margin: 0;
                 &:before {
                     content: " — ";
                 }
             }
+        }
+
+        .category-blob {
+            padding: $gutter-size--small;
+            margin: 0 $gutter-size--small;
         }
     }
 }

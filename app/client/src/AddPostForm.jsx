@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -49,9 +49,7 @@ const AddPostForm = () => {
         };
 
         const data = await fetch(
-            `/add-post?categories=${form.categories}&title=${form.title}&body=${form.body}&author=${
-                form.author
-            }`,
+            `/add-post?categories=${form.categories}&title=${form.title}&body=${form.body}`,
             settings
         )
             .then((response) => response.json())
@@ -77,8 +75,12 @@ const AddPostForm = () => {
     const onChange = (e) => {
         const input = e.currentTarget.value;
         const name = e.currentTarget.name;
-        const formValue = { [name]: input };
+        let formValue = { [name]: input };
+
         setForm((prevState) => {
+            if (name === 'categories' && prevState.categories) {
+                formValue = { [name]: [prevState.categories, input]}
+            }
             return { ...prevState, ...formValue };
         });
     };
@@ -121,52 +123,18 @@ const AddPostForm = () => {
                     />
                 </div>
                 <div className="form-row">
-                    <select
-                        name={name}
-                        className="form-control"
-                        onChange={onChange}
-                        onFocus={onFocus}
-                        placeholder="author"
-                        id="author"
-                        value={form.author}
-                        name="author">
-                        <option disabled selected value="">
-                            Select an author
-                        </option>
-                        <Query query={GET_USERS}>
-                            {({ loading, error, data }) => {
-                                if (loading) return <p>Loading...</p>;
-                                if (error) return <p>Error</p>;
-                                return data.allUsers.edges.map((user) => (
-                                    <option label={user.node.username} value={user.node.username} />
-                                ));
-                            }}
-                        </Query>
-                    </select>
-                </div>
-                <div className="form-row">
-                    <select
-                        name={name}
-                        className="form-control"
-                        onChange={onChange}
-                        onFocus={onFocus}
-                        placeholder="categories"
-                        id="categories"
-                        value={form.categories}
-                        name="categories">
-                        <option disabled selected value="">
-                            Select a category
-                        </option>
-                        <Query query={GET_CATEGORIES}>
-                            {({ loading, error, data }) => {
-                                if (loading) return <p>Loading...</p>;
-                                if (error) return <p>Error</p>;
-                                return data.allCategories.edges.map((cat) => (
-                                    <option label={cat.node.name} value={cat.node.name} />
-                                ));
-                            }}
-                        </Query>
-                    </select>
+                    <Query query={GET_CATEGORIES}>
+                        {({ loading, error, data }) => {
+                            if (loading) return <p>Loading...</p>;
+                            if (error) return <p>Error</p>;
+                            return data.allCategories.edges.map((cat) => (
+                                <Fragment>
+                                    <label htmlFor={cat.node.name}>{cat.node.name}</label>
+                                    <input type="checkbox" name="categories" id={cat.node.name} label={cat.node.name} value={cat.node.name} onChange={onChange} />
+                                </Fragment>
+                            ));
+                        }}
+                    </Query>
                 </div>
                 <p className="error">{error}</p>
                 <button className="btn btn-primary full-width">Add</button>
