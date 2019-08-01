@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: ['./app/client/src/index.js'],
@@ -14,8 +14,23 @@ module.exports = {
                 },
             },
             {
-                test: [/.css$|.scss$/],
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                test: /\.s?css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            includePaths: [path.resolve(__dirname, '../node_modules')],
+                        },
+                    },
+                ],
             },
         ],
     },
