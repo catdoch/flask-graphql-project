@@ -5,16 +5,18 @@
     "group:all"
   ],
   "separateMajorMinor": true,
-  "lockFileMaintenance": {
-    "automerge": true
-  },
-  "minor": {
-    "automerge": true
-  },
-  "patch": {
-    "automerge": true
-  },
-  "pin": {
-    "automerge": true
-  }
+  "separateMultipleMajor": true,
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    }
+  ]
 }
