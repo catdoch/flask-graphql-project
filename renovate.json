@@ -4,5 +4,17 @@
     "config:base",
     "group:all"
   ],
-  "separateMajorMinor": true
+  "separateMajorMinor": true,
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+  "minor": {
+    "automerge": true
+  },
+  "patch": {
+    "automerge": true
+  },
+  "pin": {
+    "automerge": true
+  }
 }
