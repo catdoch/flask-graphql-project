@@ -5,7 +5,7 @@
   "author": "catdoch",
   "license": "MIT",
   "engines": {
-    "npm": "6.4.1",
+    "npm": "10.9.0",
     "node": "10.15.3",
     "yarn": "1.x"
   },
@@ -36,7 +36,7 @@
   "dependencies": {
     "@material-ui/core": "3.0.1",
     "@material-ui/icons": "3.0.1",
-    "autoprefixer": "^9.6.1",
+    "autoprefixer": "^10.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "cssnano": "^4.1.10",
     "graphql": "0.13.2",
@@ -49,6 +49,6 @@
     "react-dom": "16.7.0-alpha.2",
     "react-hot-loader": "4.6.0",
     "react-router-dom": "4.3.1",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^10.0.0"
   }
 }
